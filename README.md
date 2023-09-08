@@ -14,7 +14,7 @@ Link to deployed code:  https://jarrodkrauszer.github.io/password_generator/
  - We added confirms for each of the character sets they wanted to include
  - We added a prompt to ask the user to enter a password length
  - We used conditionals to see what character sets should be included
- - We created a generatePassword fuction that took in the character set and length are arguments and returns a new password
+ - We created a generatePassword function that took in the character set and length are arguments and returns a new password
 
 ## Mock-Up
 
