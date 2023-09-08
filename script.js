@@ -23,7 +23,6 @@ function writePassword() {
   var passwordLength = prompt('Password Length? Please choose between 8 and 128 characters');
 
   passwordLength = parseInt(passwordLength);
-  console.log(typeof passwordLength);
 
   if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
     var passwordLength = prompt('Please only choose between 8 and 128 characters');
