@@ -3,14 +3,14 @@ var generateBtn = document.querySelector("#generate");
 
 var numbers = '0123456789';
 var lowercase = 'abcdefghijklmnopqrstuvwxyz';
-var symbols = ' !"#$%&\'()*+,-./:;=<>?[\\]^_{}|~';
+var symbols = '!"#$%&\'()*+,-./:;=<>?[\\]^_{}|~';
 
 function generatePassword(characters, passwordLength) {
   var newPassword = "";
 
-  for (var i = 0; i < passwordLength; i++) {
-    var randomNumber = Math.floor(Math.random() * characters.length);
-    newPassword += characters.substring(randomNumber, randomNumber +1);
+  for (var x = 0; x < passwordLength; x++) {
+    var randomNum = Math.floor(Math.random() * characters.length);
+    newPassword += characters.substring(randomNum, randomNum +1);
    }
 
    return newPassword;
@@ -20,7 +20,6 @@ function generatePassword(characters, passwordLength) {
 function writePassword() {
   var chars = '';
   var password = '';
-  var validLength = false;
 
   var includeLower = confirm('Would you like to include lowercase letters?  Enter Y or N');
   var includeUpper = confirm('Would you like to include uppercase letters?  Enter Y or N');
@@ -41,8 +40,10 @@ function writePassword() {
   }
 
   if (includeSymbols) {
-    chars += includeSymbols;
+    chars += symbols;
   }
+
+  console.log(chars.toString());
 
   passwordLength = parseInt(passwordLength);
 
@@ -58,7 +59,7 @@ function writePassword() {
   if (chars.length > 0) {
     password  = generatePassword(chars, passwordLength);
   } else {
-    password = 'You did not enter all the correct criteria!'
+    password = 'You must choose at least one character set!'
   }
   var passwordText = document.querySelector("#password");
   
