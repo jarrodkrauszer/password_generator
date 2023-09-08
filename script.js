@@ -6,7 +6,7 @@ var lowercase = 'abcdefghijklmnopqrstuvwxyz';
 var symbols = ' !"#$%&\'()*+,-./:;=<>?[\\]^_{}|~';
 
 function generatePassword(characters, passwordLength) {
-  let newPassword = "";
+  var newPassword = "";
 
   for (var i = 0; i < passwordLength; i++) {
     var randomNumber = Math.floor(Math.random() * characters.length);
@@ -20,7 +20,28 @@ function generatePassword(characters, passwordLength) {
 function writePassword() {
   // var chars = '';
   var chars = numbers + lowercase + lowercase.toUpperCase() + symbols;
+
   var passwordLength = prompt('Password Length? Please choose between 8 and 128 characters');
+  var includeLower = prompt('Would you like to include lowercase letters?  Enter Y or N');
+  var includeUpper = prompt('Would you like to include uppercase letters?  Enter Y or N');
+  var includeNumbers = prompt('Would you like to include numbers?  Enter Y or N');
+  var includeSymbols = prompt('Would you like to include special characters?  Enter Y or N');
+
+  if (includeLower[0].toUpperCase === 'Y') {
+    chars = lowercase;
+  }
+
+  if (includeUpper[0].toUpperCase === 'Y') {
+    chars = lowercase.toUpperCase();
+  }
+
+  if (includeNumbers[0].toUpperCase === 'Y') {
+    chars = numbers;
+  }
+
+  if (includeSymbols[0].toUpperCase === 'Y') {
+    chars = includeSymbols;
+  }
 
   passwordLength = parseInt(passwordLength);
 
