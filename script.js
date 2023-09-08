@@ -25,7 +25,7 @@ function writePassword() {
   var includeUpper = confirm('Would you like to include uppercase letters?  Enter Y or N');
   var includeNumbers = confirm('Would you like to include numbers?  Enter Y or N');
   var includeSymbols = confirm('Would you like to include special characters?  Enter Y or N');
-  var passwordLength = prompt('Password Length? Please enter a length of at least 8 characters and no more than 128 characters');
+  var passwordLength = prompt('Password Length? Please enter a number of at least 8 characters and no more than 128 characters');
 
   if (includeLower) {
     chars += lowercase;
@@ -49,8 +49,8 @@ function writePassword() {
 
   while (true) {
     if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
-      alert('Please enter a length of at least 8 characters and no more than 128 characters');
-      passwordLength = prompt('Password Length? Please enter a length of at least 8 characters and no more than 128 characters');
+      alert('Please enter a number of at least 8 characters and no more than 128 characters');
+      passwordLength = prompt('Password Length? Please enter a number of at least 8 characters and no more than 128 characters');
     } else {
       break;
     }
