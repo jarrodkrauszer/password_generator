@@ -18,38 +18,48 @@ function generatePassword(characters, passwordLength) {
 
 // Write password to the #password input
 function writePassword() {
-  // var chars = '';
-  var chars = numbers + lowercase + lowercase.toUpperCase() + symbols;
+  var chars = '';
+  var password = '';
+  var validLength = false;
 
-  var passwordLength = prompt('Password Length? Please choose between 8 and 128 characters');
-  var includeLower = prompt('Would you like to include lowercase letters?  Enter Y or N');
-  var includeUpper = prompt('Would you like to include uppercase letters?  Enter Y or N');
-  var includeNumbers = prompt('Would you like to include numbers?  Enter Y or N');
-  var includeSymbols = prompt('Would you like to include special characters?  Enter Y or N');
+  var includeLower = confirm('Would you like to include lowercase letters?  Enter Y or N');
+  var includeUpper = confirm('Would you like to include uppercase letters?  Enter Y or N');
+  var includeNumbers = confirm('Would you like to include numbers?  Enter Y or N');
+  var includeSymbols = confirm('Would you like to include special characters?  Enter Y or N');
+  var passwordLength = prompt('Password Length? Please enter a length of at least 8 characters and no more than 128 characters');
 
-  if (includeLower[0].toUpperCase === 'Y') {
-    chars = lowercase;
+  if (includeLower) {
+    chars += lowercase;
   }
 
-  if (includeUpper[0].toUpperCase === 'Y') {
-    chars = lowercase.toUpperCase();
+  if (includeUpper) {
+    chars += lowercase.toUpperCase();
   }
 
-  if (includeNumbers[0].toUpperCase === 'Y') {
-    chars = numbers;
+  if (includeNumbers) {
+    chars += numbers;
   }
 
-  if (includeSymbols[0].toUpperCase === 'Y') {
-    chars = includeSymbols;
+  if (includeSymbols) {
+    chars += includeSymbols;
   }
 
   passwordLength = parseInt(passwordLength);
 
-  if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
-    var passwordLength = prompt('Please only choose between 8 and 128 characters');
+  while (true) {
+    if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
+      alert('Please enter a length of at least 8 characters and no more than 128 characters');
+      passwordLength = prompt('Password Length? Please enter a length of at least 8 characters and no more than 128 characters');
+    } else {
+      break;
+    }
   }
-
-  var password  = generatePassword(chars, passwordLength);
+  
+  if (chars.length > 0) {
+    password  = generatePassword(chars, passwordLength);
+  } else {
+    password = 'You did not enter all the correct criteria!'
+  }
   var passwordText = document.querySelector("#password");
   
   passwordText.value = password;
